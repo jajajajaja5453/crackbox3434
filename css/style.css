@@ -39,3 +39,11 @@ body {
 .gb {
     border: 1px solid #ffffff;
 }
+tr th {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+tr td {
+    padding-left: 15px;
+    padding-right: 15px;
+}
