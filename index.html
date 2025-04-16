@@ -6,68 +6,54 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="css/style.css">
     <title>crackbox</title>
-    <style>
-        :root {
-            padding: 0;
-            margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
-            color: white;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: black;
-        }
-        .glass {
-            backdrop-filter: blur(16px) saturate(180%);
-            background-color: rgba(20, 20, 20, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .text-glow {
-            text-shadow: white 0px 0px 20px; 
-        }
-        .glow {
-            box-shadow: 0px 0px 50px 2px white;
-        }
-        .hover-underline {
-            position: relative;
-        }
-        .hover-underline::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: white;
-            width: 0%;
-            height: 1px;
-            transition-duration: 0.2s;
-        }
-        .hover-underline:hover::after {
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
     <div id="particles" class="fixed inset-x-0 z-[-1]"></div>
-    <div class="fixed w-screen h-screen flex flex-col items-center justify-center p-[100px] bg-transparent">
-        <div class="flex flex-col items-center justify-center gap-[5px]">
+    <div class="fixed w-screen h-screen flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-center gap-[10px]">
             <a class="text-glow text-5xl">crackbox</a>
-            <div class="">
-                <a class=""><strike>Paid</strike> Gorilla Tag Menus </a>
-            </div>
-            <div class="glow w-full h-px bg-white"></div>
+            <a><strike>Paid</strike> Gorilla Tag Menus</a>
+
+            <span class="glow w-full max-w-{200px} h-px bg-white"></span>
             <div class="flex flex-row gap-[10px]">
-                <a class="hover-underline cursor-pointer text-glow">Home</a>
-                <a class="hover-underline cursor-pointer text-glow">Cracks</a>
-                <a class="hover-underline cursor-pointer text-glow">About</a>
+                <a href="index.html" class="hover-underline cursor-pointer text-glow">Home</a>
+                <a data-tab-id="cracks" class="tab-btn hover-underline cursor-pointer text-glow">Cracks</a>
+                <a data-tab-id="credits" class="tab-btn hover-underline cursor-pointer text-glow">Credits</a>
+            </div>
+            <span class="glow w-full max-w-{200px} h-px bg-white"></span>
+
+            <div id="cracks" class="tab hidden">
+                <a>Coming soon!</a>
+            </div>
+
+            <div id="credits" class="tab hidden flex flex-row gap-[10px]">
+                <div class="gb aspect-square w-[100px] rounded-md flex flex-col items-center justify-center p-[10px]">
+                    <img class="rounded-md w-[50px]" src="https://discord-info-amber.vercel.app/pfp/1278465667137409059">
+                    <a class="text-glow hover-underline" href="https://discord.com/users/1278465667137409059">fxzh</a>
+                </div>
+
+                <div class="gb aspect-square w-[100px] rounded-md flex flex-col items-center justify-center p-[10px]">
+                    <img class="rounded-md w-[50px]" src="https://discord-info-amber.vercel.app/pfp/361338999048110090">
+                    <a class="text-glow hover-underline" href="https://discord.com/users/361338999048110090">NT01</a>
+                </div>
             </div>
         </div>
     </div>
     <script src="js/particles.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         particlesJS('particles', {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":3,"direction":"bottom","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+
+        $('.tab-btn').on('click', function() {
+            const tabId = $(this).data('tabId');
+            console.log(`Switching tab to: ${tabId}`)
+
+            $('.tab').addClass('hidden');
+            $(`#${tabId}`).removeClass('hidden');
+        });
     </script>
 </body>
 </html>
