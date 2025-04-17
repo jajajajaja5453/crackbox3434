@@ -15,15 +15,15 @@
     <div class="fixed w-screen h-screen flex flex-col items-center justify-center">
         <div class="flex flex-col items-center justify-center gap-[10px]">
             <a class="text-glow text-5xl">crackbox</a>
-            <a><strike>Paid</strike> Gorilla Tag Menus</a>
+            <a id="typewriter" class="caret"></a>
 
-            <span class="glow w-full max-w-{200px} h-px bg-white"></span>
+            <span class="glow w-full max-w-[225px] h-px bg-white"></span>
             <div class="flex flex-row gap-[10px]">
                 <a href="https://discord.gg/N8NX6bEZD4" class="hover-underline cursor-pointer text-glow">Discord</a>
                 <a data-tab-id="cracks" class="tab-btn hover-underline cursor-pointer text-glow">Cracks</a>
                 <a data-tab-id="credits" class="tab-btn hover-underline cursor-pointer text-glow">Credits</a>
             </div>
-            <span class="glow w-full w-full h-px bg-white"></span>
+            <span class="glow w-full max-w-[225px] h-px bg-white"></span>
 
             <div id="cracks" class="tab hidden">
                 <table class="w-full text-sm text-left">
@@ -73,6 +73,63 @@
             $('.tab').addClass('hidden');
             $(`#${tabId}`).removeClass('hidden');
         });
+
+        const descriptionTexts = ['No more pay to cheat', 'Gorilla Tag mod menus cracked', "Paid cheats made free", "Cracked software, no limits", "Unlock paid cheats for nothing", "Free access to once-paid cheats", ""];
+        $(document).ready(function() {
+            const typewriter = $('#typewriter');
+            let textIndex = 0;
+
+            function randomIndex() {
+                let result;
+                do {
+                    result = Math.floor(Math.random() * descriptionTexts.length);
+                } while (result == textIndex);
+                return result;
+            }
+
+            function typeText(text, callback) {
+                let i = 0;
+                function typing() {
+                    if (i <= text.length) {
+                        typewriter.append(text[i]);
+                        i++;
+                        setTimeout(typing, 100);
+                    }
+                    else {
+                        callback()
+                    }
+                }
+                typing();
+            }
+
+            function deleteText(callback) {
+                let text = typewriter.text();
+                function deleting() {
+                    if (text.length > 0) {
+                        typewriter.text(text.substring(0, text.length - 1));
+                        text = typewriter.text();
+                        setTimeout(deleting, 100);
+                    }
+                    else {
+                        callback();
+                    }
+                }
+                deleting();
+            }
+
+            function typewriteText() {
+                typeText(descriptionTexts[textIndex], function() {
+                    setTimeout(function() {
+                        deleteText(function() {
+                            textIndex = randomIndex();
+                            typewriteText();
+                        })
+                    })
+                })
+            }
+            typewriteText();
+        });
+
     </script>
 </body>
 </html>

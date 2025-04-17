@@ -47,3 +47,23 @@ tr td {
     padding-left: 15px;
     padding-right: 15px;
 }
+.caret {
+    position: relative;
+    padding-right: 4px;
+}
+.caret::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1em;
+    background-color: white;
+    width: 2px;
+    animation: flash 1s infinite;
+}
+@keyframes flash {
+    50% {
+        opacity: 0;
+    }
+}
